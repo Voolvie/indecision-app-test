@@ -2,53 +2,71 @@
 
 console.log('App is running');
 
+var object = {
+    title: 'Book title',
+    subtitle: 'Book subtitle',
+    options: ['one', 'two']
+};
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Does change?'
+        object.title
     ),
-    React.createElement(
+    object.subtitle ? React.createElement(
         'p',
         null,
-        'yeee'
-    ),
-    React.createElement(
+        'Subtitle: ',
+        object.subtitle
+    ) : 'No subtitle',
+    object.options.length && object.options.length > 0 && React.createElement(
         'ol',
         null,
         React.createElement(
             'li',
             null,
-            'item 1'
+            object.options[0]
         ),
         React.createElement(
             'li',
             null,
-            'item 2'
+            object.options[1]
         )
     )
 );
+var user = {
+    name: 'Koks',
+    age: 22,
+    location: 'Gce'
+};
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'temp2'
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
-        'age:22'
+        'Age:',
+        user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'location:lol'
-    )
+    getLocation(user.location)
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
