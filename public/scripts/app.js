@@ -1,27 +1,33 @@
 'use strict';
 
-// function square(x) {
-//     return x * x
+// const add = function (a, b) {
+//     console.log(arguments)
+//     return a + b
 // }
+// console.log(add(55, 1, 1001))
 
-// console.log(square(8))
+var user = {
+    name: 'Imie',
+    cities: ['Gl', 'Krk', 'Wwa'],
+    printPlacesLived: function printPlacesLived() {
+        var _this = this;
 
-// const squareArrow = (x) => {
-//     return x * x
-// }
-
-// console.log(squareArrow(8))
-var fullName = 'Imie Nazwisko';
-
-// const getFirstName = () => {
-//     const firstName = fullName.split(' ')[0]
-//     return firstName
-// }
-
-var getFirstName = function getFirstName() {
-  return fullName.split(' ')[0];
+        return this.cities.map(function (city) {
+            return _this.name + ' has lived in ' + city;
+        });
+    }
 };
+console.log(user.printPlacesLived());
 
-var imie = getFirstName();
+var multiplier = {
+    numbers: [1, 2, 3, 4],
+    multiplyBy: 4,
+    multiply: function multiply() {
+        var _this2 = this;
 
-console.log(imie);
+        return this.numbers.map(function (number) {
+            return number + ' multibplied by 4 is ' + number * _this2.multiplyBy;
+        });
+    }
+};
+console.log(multiplier.multiply());

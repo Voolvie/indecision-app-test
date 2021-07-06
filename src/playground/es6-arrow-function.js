@@ -16,7 +16,7 @@ const fullName = 'Imie Nazwisko'
 //     return firstName
 // }
 
-const getFirstName = () =>  fullName.split(' ')[0]
+const getFirstName = (fullName) =>  fullName.split(' ')[0]
 
 const imie = getFirstName()
 
