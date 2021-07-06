@@ -2,84 +2,110 @@
 
 console.log('App is running');
 
-// const object = {
-//     title: 'Book title',
-//     subtitle: 'Book subtitle',
-//     options: ['one', 'two']
-// }
-// const template = (
-//     <div>
-//         <h1>{object.title}</h1>
-//         {object.subtitle ? <p>Subtitle: {object.subtitle}</p> : 'No subtitle'}
-//         {(object.options.length && object.options.length > 0) && 
-//         <ol>
-//             <li>{object.options[0]}</li>
-//             <li>{object.options[1]}</li>
-//         </ol>
-//         }
-//     </div>
-// )
-// const user = {
-//     name: 'Koks',
-//     age: 22,
-//     location: 'Gce'
-// }
-// function getLocation(location) {
-//     if (location) {
-//         return <p>Location: {location}</p>
-//     }
-// }
-// const templateTwo = (
-//     <div>
-//         <h1>{user.name ? user.name : 'Anonymous'}</h1>
-//         {(user.age && user.age >= 18) && <p>Age:{user.age}</p>}
-//         {getLocation(user.location)}
-//     </div>
-// )
-
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    renderCounterApp();
-};
-var minusOne = function minusOne() {
-    count--;
-    renderCounterApp();
-};
-var reset = function reset() {
-    count = 0;
-    renderCounterApp();
+var object = {
+    title: 'Book title',
+    subtitle: 'Book subtitle',
+    options: ['one', 'two']
 };
 
-var appRoot = document.getElementById('app');
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault(); //stop page refresh
+    console.log('form submitted');
 
-var renderCounterApp = function renderCounterApp() {
-    var templateThree = React.createElement(
+    var option = e.target.elements.option.value;
+
+    if (option) {
+        object.options.push(option);
+        e.target.elements.option.value = '';
+        renderFormApp();
+    }
+};
+var wipeData = function wipeData(e) {
+    e.preventDefault();
+    console.log('data deleted');
+
+    object.options = [];
+    renderFormApp();
+};
+
+var renderFormApp = function renderFormApp() {
+    var template = React.createElement(
         'div',
         null,
         React.createElement(
             'h1',
             null,
-            'Count: ',
-            count
+            object.title
+        ),
+        object.subtitle ? React.createElement(
+            'p',
+            null,
+            'Subtitle: ',
+            object.subtitle
+        ) : 'No subtitle',
+        object.options.length && object.options.length > 0 && React.createElement(
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                object.options[0]
+            ),
+            React.createElement(
+                'li',
+                null,
+                object.options[1]
+            ),
+            React.createElement(
+                'li',
+                null,
+                object.options[2]
+            ),
+            React.createElement(
+                'li',
+                null,
+                object.options[3]
+            ),
+            React.createElement(
+                'li',
+                null,
+                object.options[4]
+            ),
+            React.createElement(
+                'li',
+                null,
+                object.options[5]
+            ),
+            React.createElement(
+                'li',
+                null,
+                object.options[6]
+            )
         ),
         React.createElement(
-            'button',
-            { onClick: addOne },
-            '+1'
+            'p',
+            null,
+            object.options.length
         ),
         React.createElement(
-            'button',
-            { onClick: minusOne },
-            '-1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: reset },
-            'reset'
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add option'
+            ),
+            React.createElement(
+                'button',
+                { onClick: wipeData },
+                'Wipe options'
+            )
         )
     );
-    ReactDOM.render(templateThree, appRoot);
+    ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+var appRoot = document.getElementById('app');
+
+renderFormApp();

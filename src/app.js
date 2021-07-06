@@ -1,70 +1,61 @@
 console.log('App is running')
 
-// const object = {
-//     title: 'Book title',
-//     subtitle: 'Book subtitle',
-//     options: ['one', 'two']
-// }
-// const template = (
-//     <div>
-//         <h1>{object.title}</h1>
-//         {object.subtitle ? <p>Subtitle: {object.subtitle}</p> : 'No subtitle'}
-//         {(object.options.length && object.options.length > 0) && 
-//         <ol>
-//             <li>{object.options[0]}</li>
-//             <li>{object.options[1]}</li>
-//         </ol>
-//         }
-//     </div>
-// )
-// const user = {
-//     name: 'Koks',
-//     age: 22,
-//     location: 'Gce'
-// }
-// function getLocation(location) {
-//     if (location) {
-//         return <p>Location: {location}</p>
-//     }
-// }
-// const templateTwo = (
-//     <div>
-//         <h1>{user.name ? user.name : 'Anonymous'}</h1>
-//         {(user.age && user.age >= 18) && <p>Age:{user.age}</p>}
-//         {getLocation(user.location)}
-//     </div>
-// )
+const object = {
+    title: 'Book title',
+    subtitle: 'Book subtitle',
+    options: ['one', 'two']
+}
 
-let count = 0
-const addOne = () => {
-    count++
-    renderCounterApp()
+const onFormSubmit = (e) => {
+    e.preventDefault() //stop page refresh
+    console.log('form submitted')
+
+    const option = e.target.elements.option.value
+
+    if (option) {
+        object.options.push(option)
+        e.target.elements.option.value = ''
+        renderFormApp()
+    }
 }
-const minusOne = () => {
-    count--
-    renderCounterApp()
+const wipeData = (e) => {
+    e.preventDefault()
+    console.log('data deleted')
+
+    object.options = []
+    renderFormApp()
 }
-const reset = () => {
-    count = 0
-    renderCounterApp()
+
+const renderFormApp = () => {
+const template = (
+    <div>
+        <h1>{object.title}</h1>
+        {object.subtitle ? <p>Subtitle: {object.subtitle}</p> : 'No subtitle'}
+        {(object.options.length && object.options.length > 0) && 
+        <ol>
+            <li>{object.options[0]}</li>
+            <li>{object.options[1]}</li>
+            <li>{object.options[2]}</li>
+            <li>{object.options[3]}</li>
+            <li>{object.options[4]}</li>
+            <li>{object.options[5]}</li>
+            <li>{object.options[6]}</li>
+        </ol>
+        }
+        <p>{object.options.length}</p>
+        <form onSubmit={onFormSubmit}>
+            <input type="text" name="option"/>
+            <button>Add option</button>
+            <button onClick={wipeData}>Wipe options</button>
+        </form>
+    </div>
+)
+ReactDOM.render(template, appRoot)
 }
 
 const appRoot = document.getElementById('app')
 
+renderFormApp()
 
 
-const renderCounterApp = () => {
-    const templateThree = (
-
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>reset</button>
-        </div>
-    )
-    ReactDOM.render(templateThree, appRoot)
-}
-
-renderCounterApp()
 
