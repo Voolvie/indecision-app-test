@@ -1,91 +1,38 @@
 'use strict';
 
-console.log('App is running');
+var appRoot = document.getElementById('app');
 
-var object = {
-    title: 'Book title',
-    subtitle: 'Book subtitle',
-    options: []
-};
+var visibility = false;
 
-var numbers = [11, 22, 33];
-
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault(); //stop page refresh
-    console.log('form submitted');
-
-    var option = e.target.elements.option.value;
-
-    if (option) {
-        object.options.push(option);
-        e.target.elements.option.value = '';
-        renderFormApp();
-    }
-};
-var wipeData = function wipeData(e) {
+var toggleVisibility = function toggleVisibility(e) {
     e.preventDefault();
-    console.log('data deleted');
-
-    object.options = [];
-    renderFormApp();
+    visibility = !visibility;
+    render();
 };
-
-var renderFormApp = function renderFormApp() {
+var render = function render() {
     var template = React.createElement(
         'div',
         null,
         React.createElement(
             'h1',
             null,
-            object.title
-        ),
-        object.subtitle ? React.createElement(
-            'p',
-            null,
-            'Subtitle: ',
-            object.subtitle
-        ) : 'No subtitle',
-        React.createElement(
-            'p',
-            null,
-            object.options.length > 0 ? 'Opcje:' : 'Brak opcji'
-        ),
-        React.createElement(
-            'p',
-            null,
-            object.options.length
+            'Visibility toggle'
         ),
         React.createElement(
             'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
+            null,
             React.createElement(
                 'button',
-                null,
-                'Add option'
+                { onClick: toggleVisibility },
+                visibility ? 'Hide details' : 'Show details'
             ),
             React.createElement(
-                'button',
-                { onClick: wipeData },
-                'Wipe options'
-            ),
-            React.createElement(
-                'ol',
+                'p',
                 null,
-                object.options.map(function (option) {
-                    return React.createElement(
-                        'li',
-                        { key: option },
-                        'Opcja: ',
-                        option
-                    );
-                })
+                visibility ? 'Hidden text' : ''
             )
         )
     );
     ReactDOM.render(template, appRoot);
 };
-
-var appRoot = document.getElementById('app');
-
-renderFormApp();
+render();

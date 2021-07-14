@@ -28,7 +28,12 @@ const wipeData = (e) => {
     renderFormApp()
 }
 
-
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * object.options.length)
+    const option = object.options[randomNum]
+    alert(option)
+    renderFormApp()
+}
 const renderFormApp = () => {
 const template = (
     <div>
@@ -39,15 +44,11 @@ const template = (
         <form onSubmit={onFormSubmit}>
             <input type="text" name="option"/>
             <button>Add option</button>
-            <button onClick={wipeData}>Wipe options</button>
-            {/* {
-                numbers.map((number) => {
-                    return <p key={number}>Number: {number}</p>
-                })
-            } */}
+            <button disabled={object.options.length === 0} onClick={wipeData}>Wipe all</button>
+            <button disabled={object.options.length === 0} onClick={onMakeDecision}>Random option</button>
             <ol>
                 {object.options.map((option) => {
-                    return <li key={option}>Opcja: {option}</li>
+                    return <li key={option}>Option: {option}</li>
                 })}
             </ol>
         </form>
