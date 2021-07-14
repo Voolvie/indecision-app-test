@@ -1,64 +1,69 @@
-console.log('App is running')
+const appRoot = document.getElementById('app')
+class IndecisionApp extends React.Component {
+    render(){
+        const title = 'Indecision'
+        const subtitle = 'Randomize your tasks'
+        const options = ['one', 'two', 'three']
+        return(
+        <div>
+            <Header title={title} subtitle={subtitle}/>
+            <Action/>
+            <Options options={options}/>
+            <AddOption/>
+        </div>
 
-const object = {
-    title: 'Book title',
-    subtitle: 'Book subtitle',
-    options: []
-}
-
-
-const onFormSubmit = (e) => {
-    e.preventDefault() //stop page refresh
-    console.log('form submitted')
-
-    const option = e.target.elements.option.value
-
-    if (option) {
-        object.options.push(option)
-        e.target.elements.option.value = ''
-        renderFormApp()
+        )
     }
 }
-const wipeData = (e) => {
-    e.preventDefault()
-    console.log('data deleted')
 
-    object.options = []
-    renderFormApp()
+class Header extends React.Component {
+   render() {
+       return(
+           <div>
+               <h1>{this.props.title}</h1>
+               <h2>{this.props.subtitle}</h2>
+           </div>
+       )
+   }
 }
-
-const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random() * object.options.length)
-    const option = object.options[randomNum]
-    alert(option)
-    renderFormApp()
+class Action extends React.Component {
+    render() {
+        return(
+            <div>
+                <button>Randomize</button>
+            </div>
+        )
+    }
 }
-const renderFormApp = () => {
-const template = (
-    <div>
-        <h1>{object.title}</h1>
-        {object.subtitle ? <p>Subtitle: {object.subtitle}</p> : 'No subtitle'}
-        <p>{object.options.length > 0 ? 'Opcje:' : 'Brak opcji'}</p>
-        <p>{object.options.length}</p>
-        <form onSubmit={onFormSubmit}>
-            <input type="text" name="option"/>
-            <button>Add option</button>
-            <button disabled={object.options.length === 0} onClick={wipeData}>Wipe all</button>
-            <button disabled={object.options.length === 0} onClick={onMakeDecision}>Random option</button>
-            <ol>
-                {object.options.map((option) => {
-                    return <li key={option}>Option: {option}</li>
-                })}
-            </ol>
-        </form>
-    </div>
-)
-ReactDOM.render(template, appRoot)
+class Options extends React.Component {
+    render() {
+        return(
+            <div>
+                Options length: {this.props.options.length}
+                {this.props.options.map((option) => <Option key={option} optionText={option}/>)}
+                {/* {this.props.options.map((option) => {
+                    return <p key={option}>Option: {option}</p>
+                })} */}
+            </div>
+        )
+    }
 }
-
-const appRoot = document.getElementById('app')
-
-renderFormApp()
-
-
-
+class Option extends React.Component {
+    render(){
+        return(
+            <div>
+               Option: {this.props.optionText}
+            </div>
+        )
+    }
+}
+class AddOption extends React.Component {
+    render(){
+        return(
+            <div>
+                <button>Add option</button>
+            </div>
+        )
+    }
+}
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
