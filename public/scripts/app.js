@@ -5,8 +5,10 @@ console.log('App is running');
 var object = {
     title: 'Book title',
     subtitle: 'Book subtitle',
-    options: ['one', 'two']
+    options: []
 };
+
+var numbers = [11, 22, 33];
 
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault(); //stop page refresh
@@ -43,44 +45,10 @@ var renderFormApp = function renderFormApp() {
             'Subtitle: ',
             object.subtitle
         ) : 'No subtitle',
-        object.options.length && object.options.length > 0 && React.createElement(
-            'ol',
+        React.createElement(
+            'p',
             null,
-            React.createElement(
-                'li',
-                null,
-                object.options[0]
-            ),
-            React.createElement(
-                'li',
-                null,
-                object.options[1]
-            ),
-            React.createElement(
-                'li',
-                null,
-                object.options[2]
-            ),
-            React.createElement(
-                'li',
-                null,
-                object.options[3]
-            ),
-            React.createElement(
-                'li',
-                null,
-                object.options[4]
-            ),
-            React.createElement(
-                'li',
-                null,
-                object.options[5]
-            ),
-            React.createElement(
-                'li',
-                null,
-                object.options[6]
-            )
+            object.options.length > 0 ? 'Opcje:' : 'Brak opcji'
         ),
         React.createElement(
             'p',
@@ -100,6 +68,18 @@ var renderFormApp = function renderFormApp() {
                 'button',
                 { onClick: wipeData },
                 'Wipe options'
+            ),
+            React.createElement(
+                'ol',
+                null,
+                object.options.map(function (option) {
+                    return React.createElement(
+                        'li',
+                        { key: option },
+                        'Opcja: ',
+                        option
+                    );
+                })
             )
         )
     );
