@@ -6,7 +6,6 @@ const object = {
     options: []
 }
 
-const numbers = [11, 22, 33]
 
 const onFormSubmit = (e) => {
     e.preventDefault() //stop page refresh
