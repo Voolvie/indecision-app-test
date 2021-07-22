@@ -13,4 +13,10 @@ const canDrink = (x) => {
     }
 }
 
+export default (x) => {
+    if (x > 66){
+        return true
+    } return false
+}
+
 export {isAdult,canDrink}

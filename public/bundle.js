@@ -16,7 +16,7 @@
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n/* harmony import */ var _person_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./person.js */ \"./src/person.js\");\n\r\n\r\n\r\nconsole.log('app.js is running1')\r\nconsole.log((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.square)(4))\r\nconsole.log((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.add)(22,3))\r\nconsole.log((0,_person_js__WEBPACK_IMPORTED_MODULE_1__.isAdult)(22))\r\nconsole.log((0,_person_js__WEBPACK_IMPORTED_MODULE_1__.canDrink)(12))\n\n//# sourceURL=webpack://indecision-app/./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n/* harmony import */ var _person_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./person.js */ \"./src/person.js\");\n\r\n\r\n\r\nconsole.log('app.js is running1')\r\n// console.log(square(4))\r\n// console.log(add(22,3))\r\n// console.log(subtract(10, 2))\r\nconsole.log((0,_person_js__WEBPACK_IMPORTED_MODULE_1__.isAdult)(22))\r\nconsole.log((0,_person_js__WEBPACK_IMPORTED_MODULE_1__.canDrink)(12))\r\nconsole.log((0,_person_js__WEBPACK_IMPORTED_MODULE_1__.default)(74))\n\n//# sourceURL=webpack://indecision-app/./src/app.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"isAdult\": () => (/* binding */ isAdult),\n/* harmony export */   \"canDrink\": () => (/* binding */ canDrink)\n/* harmony export */ });\nconst isAdult = (x) => {\r\n    if(x >=18 ){\r\n        return true\r\n    } else {\r\n        return false\r\n    }\r\n}\r\nconst canDrink = (x) => {\r\n    if(x >=21 ){\r\n        return true\r\n    } else {\r\n        return false\r\n    }\r\n}\r\n\r\n\n\n//# sourceURL=webpack://indecision-app/./src/person.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"isAdult\": () => (/* binding */ isAdult),\n/* harmony export */   \"canDrink\": () => (/* binding */ canDrink)\n/* harmony export */ });\nconst isAdult = (x) => {\r\n    if(x >=18 ){\r\n        return true\r\n    } else {\r\n        return false\r\n    }\r\n}\r\nconst canDrink = (x) => {\r\n    if(x >=21 ){\r\n        return true\r\n    } else {\r\n        return false\r\n    }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((x) => {\r\n    if (x > 66){\r\n        return true\r\n    } return false\r\n});\r\n\r\n\n\n//# sourceURL=webpack://indecision-app/./src/person.js?");
 
 /***/ }),
 
@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"square\": () => (/* binding */ square),\n/* harmony export */   \"add\": () => (/* binding */ add)\n/* harmony export */ });\nconsole.log('utils.js is running1')\r\nconst square = (x) => x * x\r\nconst add = (a, b) => a + b\r\n\r\n\n\n//# sourceURL=webpack://indecision-app/./src/utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"square\": () => (/* binding */ square),\n/* harmony export */   \"add\": () => (/* binding */ add),\n/* harmony export */   \"default\": () => (/* binding */ subtract)\n/* harmony export */ });\nconsole.log('utils.js is running1')\r\nconst square = (x) => x * x\r\nconst add = (a, b) => a + b\r\nconst subtract = (a, b) => a - b\r\n\r\n\n\n//# sourceURL=webpack://indecision-app/./src/utils.js?");
 
 /***/ })
 
